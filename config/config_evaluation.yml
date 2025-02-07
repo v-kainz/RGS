@@ -1,0 +1,54 @@
+path_to_evaluate: ['statistics', ['LICS']] # enter folder and potentially more subfolders as specified in the config.yaml to evaluate them
+files_to_evaluate: [] # if filenames are entered here, only those files (within the first(!) subfolder specified above) will be evaluated. E.g. ['04_ordinary_0_NA3_RS0.json']
+new_evaluation: False # if True: evaluation will be as if is has not been evaluated before, regardless of any existing artifacts
+MULTIPROCESSING: True # evaluate multiple folders in parallel. Only parallelizes folders, not files. Only possible if files_to_evaluate is an empty list
+
+plot_selection_sg: # choose from the following plots
+
+  single_plots: # evaluate one single simulation
+    plot_dynamics:                 True # time evolution of the agents' reputations with each other and their self esteem
+    plot_dynamics_simple:          False # time evolution of the agents' averaged reputations
+    plot_communications:           False # same as plot_dynamics with additional information about the agents' statements (who said/lied when what)
+    plot_friendship:               False # time evolution of mutual friendships
+    plot_dyn_fr:                   False # time evolution of reputations with additional friendship information
+    plot_ToMI:                     False # time evolution of the difference between agents' ToM and the thereby estimated actual opinion. I.e. the quality of the agents' ToM over time
+    plot_ToMC:                     False # time evolution of the quality of agents' estimation of what another agent wants to make them think (I tilde in the paper)
+    plot_kappa:                    False # time evolution of all agents' median surprise scale
+    plot_rep_comparison:           False # time evolution of red's reputation as function of the others' reputation
+    plot_relations:                False # time evolution of the number of communications the agents had with each other, and the number of messages they herad about each other
+    plot_EBEH_parameter_evolution: True # time evolution of the agents' estimation of blushing frequencies
+
+  stat_plots: # evaluate several simulations statistically
+    #plot_statistics:                              True # [plotted anyways as default] averaged time evolution of mutual reputations and self-esteems
+    plot_statistics_simple:                        True # averaged time evolution of reputations
+    plot_histrogram:                               False # distribution of reputation values at the end of the simulation
+    plot_chaos_rep_scatter:                        False # mutual reputation of all agents as a function of the overall chaos in their opinions (simple scatter plot)
+    plot_kappa_steps:                              False # averaged time evolution of the median surprise scale for each agent
+    plot_kappa_comparism_scatter:                  False # agent 0's surprise scale vs other agents' suprise scale
+    plot_surprise_hist:                            False # distribution of the agents' surprise values during all simulations and times 
+    plot_stat_fr_dyn:                              False # averaged time evolution of mutual freindships
+    plot_stat_fr:                                  False # average friendship strengths as linewidth between a triangular graph. ONLY SUITABLE FOR 3 AGENTS!
+    plot_Nfr_rep:                                  False # the average number of friends an agent has vs its reputation. ONLY SUITABLE FOR DISCRETE FRIENDSHIPS
+    plot_Fr_rep:                                   False # the average time an agent a considers agent b a friend vs b's reputation in the eyes of a. ONLY SUITABLE FOR DISCRETE FRIENDSHIPS
+    plot_Fr_rep_c:                                 False # the average time an agent a considers agent b a friend vs b's reputation in the eyes of a (density distribution via gaussians over meshgrid). ONLY SUITABLE FOR DISCRETE FRIENDSHIPS
+    plot_stat_rel:                                 False # time evolution of the averaged connection strength bewteen two agents
+    plot_rel_rep_scatter:                          False # the connection strength between two agents vs. their mutual reputation
+    plot_rel_fr_scatter:                           False # the connection strength between agents vs their friendship
+    plot_informedness:                             False # distribution of the agents' informednesses at the end of the simulations
+    plot_judgement_quality:                        False # distribution of the correctness of the agents' honesty estimations either measured as absolut different between their estimation and the truth or as the surprise they would encounter when finding out the truth (i.e. log)
+    plot_EBEH_stat:                                True # averaged time evolution of the estimation of blushing frequencies 
+    plot_likelihood_ratio_stat:                    False # averaged time evolution of the likelihood ratio P((not)blush|not honest)/P((not)blush|honest)
+    plot_likelihood_ratio_hist:                    False # distribution of likelihood ratio values
+    plot_BADEnotBADE_hist:                         True # distribution of various quantities (same as above) when an agent is suffering under a BADE compared to when its not.
+    plot_LR_rep0:                                  False # agent 0's reputation vs the agents' likelihood ratios (defined as above)
+    plot_LR_rep0_individual:                       False # agent 0's reputation vs the agents' likelihood ratios, individually for each agent
+    plot_LR_info:                                  False # the informedness of agents vs their likelihood ratio
+    plot_EBEH_hist:                                True # distribution of agents' estimations of blushing frequencies
+    plot_info_ToM:                                 False # correlation between the agents' informednesses vs their ToM correctness
+    plot_ToM_rep:                                  False # correlation of the agents' reputations with their ToM correctnesses
+    plot_rep_LieAcceptance:                        False # correlation between the rate with which an agent's lies are accepted by the others vs this agent's reputations
+
+  comb_stat_plots: # compared for all strategies that have been used in this folder
+    plot_hist0:                                    False # distribution of agent 0's final reputations for the various strategies
+    plot_BADEnotBADE_means:                        True # comparison of various quantities (informedness of ordinary agents, reputation of agent 0, surprise clased, ToM, connection strengths, friendships to agent 0) when an agent suffers from a BADE and when its not 
+    plot_comb_LR_hist:                             True # distibution of the agents perceived likelihood ratios for all strategies used by agent 0 (compared to agent 0 using the ordinary strategy)

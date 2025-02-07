@@ -1,0 +1,27 @@
+game:
+  number_of_rounds: 40 # to how many rounds the existing files should be continued
+  Nstat_cont: 1 # how many continuations of the same run should be made with different random seeds
+  continue_folder: True # False: continue single file only; True: continue all files in folder
+  folder: 'statistics' # where the continued files are stored
+  subfolder: 'LICS_continued' # where the continued files are stored
+  path_reload: ['statistics', 'LICS'] # which files should be continued (either folder- or file path)
+
+evaluation:
+  evaluate_single_runs: False # makes plot for every single simulation
+  evaluate_statistics: False # makes plots for statistical evaluation, i.e. all single runs together
+  evaluate_as_large_group: False # defines type of evaluation
+
+agent_specification: # Length of each list must either be number_of_agents or 0. Order with increasing honesty. 'default' can be also entered, then default value is used for that specific agent
+  # 'default' refers to the given values from the continued file
+  # specifications here will overwrite the status from the continued file
+  honesties: [] # list of honesties of agents. if 'random': honesty will be changed in statistical simulation. Either use default or random, no combination of both
+  mindI: [] # list of knowledges as list of length-2-lists. 
+  Ks:  [] # list of K-lists of agents
+  prob_bts: [] # list of tuples describing the assumed blushing frequency in honest statements of agents
+  prob_bls: [] # list of tuples describing the assumed blushing frequency in dishonest statements of agents
+
+switches:
+  MULTIPROCESSING: True
+
+randomseed:
+  RSeed_offset: 0

@@ -1,0 +1,72 @@
+game:
+  number_of_agents: 3 # Default: 3
+  number_of_rounds: 300 # Default: 300
+  statistics_size: 8 # Number of simulations that are performed with different random seeds; ONLY relevant if main.py is run
+  modes: [{'0':'ordinary'}] # [{'0':'ordinary'}, {'0':'manipulative'}, {'0':'dominant'}, {'0':'destructive'}]
+  folder: 'experiments'
+  subfolder: 'LICS'
+
+evaluation:
+  evaluate_single_runs: False # makes plot for every single simulation
+  evaluate_statistics: True # makes plots for statistical evaluation, i.e. all single runs together
+  evaluate_as_large_group: False # defines type of evaluation
+
+agent_specification: # Length of each list must either be number_of_agents or 0. Order with increasing honesty. 'default' can be also entered, then default value is used for that specific agent
+  honesties: [] # list of honesties of agents. if 'random': honesty will be changed in statistical simulation. Either use default or random, no combination of both
+  mindI: [] # list of knowledges as list of length-2-lists. 
+  Ks:  [] # list of K-lists of agents
+  prob_bts: [] # list of tuples describing the assumed blushing frequency in honest statements of agents
+  prob_bls: [] # list of tuples describing the assumed blushing frequency in dishonest statements of agents
+
+switches:
+  COMPRESSION_METHOD: 'LUT' # choose between 'KL_minimization', 'moment_matching', 'LUT'
+  RANDOM_HONESTIES: True # if True, intrinsic honesties of agents will be randomly distributed. If False, thay are equally distributed between 0 and 1. make shure honesties is None in the game specification
+  EBEH: True # experience based evidence handling. If True, the evidential value of blushing is learned.
+  EBEH_self_awareness: True # if True: EBEH parameters are also updated in awareness update, i.e. agents assume that their own EBEH parameters are similar to the others'. If False: this assumtion is not made, the agents ignore their own statements in the EBEH update. Only matters if EBEH 
+  CONTINUOUS_FRIENDSHIP: True # if True, friendships will be continuous instead of on/off
+  ACTIVE_SELF_FRIENDSHIP: False # if True, agents can become enemies of theirown. Else, they always regard themselves as friends
+  SCALED_FLATTERING: False # if True, flattering is scaled with perceived dishonesty of the receiver. If False: flattered lies are always maximally positive
+  FRIENDSHIP_AFFECTS_B: False # if True, ordinary agents' selection of communication partners will be affected by friendships
+  FRIENDSHIP_AFFECTS_C: False # if True, ordinary agents' selection of communication topics will be affected by friendships
+  RELATION_AFFECTS_B: False # if True, ordinary agents' selection of communication partners will be affected by their relation strength
+  RELATION_AFFECTS_C:  False # if True, ordinary agents' selection of communication topics will be affected by their relation strength
+  HOMOPHOLY_AFFECTS_B: False # if True, ordinary agents' will preferebly talk to others with similar opinions
+  HOMOPHOLY_AFFECTS_C: False # if True, ordinary agents' will preferebly talk about topics, which they agree on with their conversation partner(s)
+  RANDOM_SHYNESSES: False # if True, intrinsic shynesses will be drawn randomly. If False, they are all 1
+  RANDOM_FRIENDSHIP_AFFINITIES: False # if True, intrinsic friendship affinities will be drawn randomly. If False, they are all 1
+  MULTIPROCESSING: True # switch on or off the multiprocessing
+  compatibility: True # changes some plotting routines
+  sort_by_honesty: True # if True: agents' numbers are sorted by honesty: 0=least honest, highest number=most honest.
+  propaganda: 0 # choose between 0: standard simulation, +1: propaganda, -1: antipropaganda
+
+parameters:
+  NM: 1              # collect NM messages in Buffer before update
+  openess: 1         # intensity (inverse temperature) of trustful update
+  forget_factor: 1   # what is kept after a round
+  fcaution: 0.3      # reduced lie variance -> rather make lies to small than to large
+  Klength: 10        # number of surprises remembered (N_kappa)
+  ffl: 0.1             # blush frequency of lying, not shameless agents
+  ffh: 0.00          # blush frequency of honest, not shameless agents
+  Q: 1               # how much more actual meetings count compared to having heard about someone
+  fr_affinity_log_mean: 0.5 # 10**fr_affinity_log_mean is mean of fr-affinity distribution; ONLY if RANDOM_FRIENDSHIP_AFFINITIES is True, else fr_affinity_log_mean = 0
+  fr_affinity_log_std: 0.1 # standard deviation of logarithms of fr-affinity distribution; ONLY if RANDOM_FRIENDSHIP_AFFINITIES is True, else fr_affinity_log_std = 0 ((np.log10(2)))
+  shyness_log_mean: 0.5 # 10**shyness_log_mean is mean of shyness distribution; ONLY if RANDOM_SHYNESSES is True, else shyness_log_mean = 0
+  shyness_log_std: 0 # standard deviation of logarithms of shyness distribution; ONLY if RANDOM_SHYNESSES is True, else shyness_log_std = 0 ((np.log10(2)))
+  perc_one_to_one: 1  # which fraction of conversations is 1-to-1
+
+verbosity:
+  verbose      : True  # print what is going on
+  ultraverbose : False # print diagnosis for debugging 
+
+constants:
+  minCount: 0  # smallest count number reachable by numerics
+  tiny: '1e-10'   # safety number
+  MaxCount: '1e6'  # maximal number of counts allowed to be memorized
+  Acolor: ['red', 'black', 'cyan', 'yellow', 'blue', 'grey', 'green'] # colors for the agents; if too small, list is repeated
+  Aalpha: [1,0.85,1.5,1.5,1,1,0.85] # transparency values for plotting, adjusted to Acolor; if too small, list is repeated
+  #Acolor: ['green', 'cyan', 'yellow']
+  #Aalpha: [0.85, 1.5, 1.5]
+
+randomseed:
+  RandomSeed: 21  # random seed (21 is a nice simulation)
+  RSeed_offset: 0
