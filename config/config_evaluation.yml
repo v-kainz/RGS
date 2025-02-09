@@ -1,4 +1,4 @@
-path_to_evaluate: ['statistics', ['LICS']] # enter folder and potentially more subfolders as specified in the config.yaml to evaluate them
+path_to_evaluate: ['experiments', ['LICS']] # enter folder and potentially more subfolders as specified in the config.yaml to evaluate them
 files_to_evaluate: [] # if filenames are entered here, only those files (within the first(!) subfolder specified above) will be evaluated. E.g. ['04_ordinary_0_NA3_RS0.json']
 new_evaluation: False # if True: evaluation will be as if is has not been evaluated before, regardless of any existing artifacts
 MULTIPROCESSING: True # evaluate multiple folders in parallel. Only parallelizes folders, not files. Only possible if files_to_evaluate is an empty list
