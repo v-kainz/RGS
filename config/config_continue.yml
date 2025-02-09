@@ -2,9 +2,9 @@ game:
   number_of_rounds: 40 # to how many rounds the existing files should be continued
   Nstat_cont: 1 # how many continuations of the same run should be made with different random seeds
   continue_folder: True # False: continue single file only; True: continue all files in folder
-  folder: 'statistics' # where the continued files are stored
+  folder: 'experiments' # where the continued files are stored
   subfolder: 'LICS_continued' # where the continued files are stored
-  path_reload: ['statistics', 'LICS'] # which files should be continued (either folder- or file path)
+  path_reload: ['experiments', 'LICS'] # which files should be continued (either folder- or file path)
 
 evaluation:
   evaluate_single_runs: False # makes plot for every single simulation
